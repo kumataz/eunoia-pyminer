@@ -15,5 +15,5 @@ Web3 module for pow-ethereum. The Eun Miner by Python3.
 
 * git clone https://github.com/kumataz/eunoia-pyminer
 * cd eunoia-pyminer
-* python3 octo.py
+* python3 eun-miner.py
 
