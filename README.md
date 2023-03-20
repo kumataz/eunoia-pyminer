@@ -19,7 +19,7 @@ Web3 module for pow-ethereum. The Eun Miner by Python3.
 
 ### TESTED ON :
 
-* Linux✅
+* Linux
 
 ### REQUIREMENTS :
 
