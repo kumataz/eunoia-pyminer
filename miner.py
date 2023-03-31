@@ -2,7 +2,7 @@
 Author: kumataz
 Date: 2023-03-16 16:29:41
 LastEditors: kumataz
-LastEditTime: 2023-03-31 10:44:57
+LastEditTime: 2023-03-31 10:50:57
 '''
 from web3 import Web3
 from hashlib import sha256
@@ -26,7 +26,8 @@ def main():
     minerbalance = w3.eth.getBalance(minerAddress)
     log('Current Wallet Balance: {} EUNC'.format(minerbalance))
     CurrentMinerAddress = w3.eth.coinbase
-    log('Current Miner Address: {}'.format(CurrentMinerAddress))  
+    log('Current Miner Address: {}\n'.format(CurrentMinerAddress))  
+    
     # w3.eth.coinbase = minerAddress
     # if current_miner_address == minerAddress:
     #     print("Miner address set to:", minerAddress)
