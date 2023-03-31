@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from web3 import Web3
-from hashlib import sha256
+# from hashlib import sha256
 from datetime import datetime
 import os
 import time
@@ -17,30 +17,22 @@ def main():
     print("Start the Eunoia Miner..")
     print("Connected to MinerNode: ", w3.isConnected())
 
-    minerAddress = w3.toChecksumAddress("0xf02f639A528eC5e546DfaE38606e2d0962e1abd3")
-    log('Current Wallet Address: {}'.format(minerAddress))
-    minerbalance = w3.eth.getBalance(minerAddress)
-    log('Current Wallet Balance: {} EUNC'.format(minerbalance))
     CurrentMinerAddress = w3.eth.coinbase
-    log('Current Miner Address: {}\n'.format(CurrentMinerAddress))  
+    log('Current Node-Etherbase: {}\n'.format(CurrentMinerAddress))  
+    minerAddress = w3.toChecksumAddress("0xf02f639A528eC5e546DfaE38606e2d0962e1abd3")
+    log('Your Wallet Address: {}'.format(minerAddress))
+    minerbalance = w3.eth.getBalance(minerAddress)
+    log('Your Wallet Balance: {} EUNC'.format(minerbalance))
 
-    # w3.eth.coinbase = minerAddress
-    # if current_miner_address == minerAddress:
-    #     print("Miner address set to:", minerAddress)
-    # else:
-    #     print("Failed to set miner address.")
     time.sleep(1)
 
     # kill this script
     os.system("killall -9 python > /dev/null 2>&1")
     
     while True:
-
         # block infos
         blockNumer = w3.eth.blockNumber
         log('Current BlockNumber: {}'.format(blockNumer))
-        # blocktimeAvg = (w3.eth.getBlock(blockNumer).timestamp - w3.eth.getBlock(blockNumer-100).timestamp) / 100
-        # log("AvgBlocktime: {}".format(blocktimeAvg))
 
         # miner infos
         miningStatus = w3.eth.mining
@@ -52,15 +44,10 @@ def main():
             log("Start Mining with {} worker thread{}.".format(threads, plural))  
             w3.geth.miner.start(threads)
 
-        # blockDiff = w3.eth.getBlock(blockNumer).difficulty
-        # netHashrate_M_hs = blockDiff / blocktimeAvg / 1000000
         netHashrate = getHashrate.GetNetworkHashrate(w3)
         log("The Network Hashrate: {:.2f} MH/s".format(netHashrate / 1000000))
-
-        # Miner Hashrate(MH/s)
         minerHashrate = getHashrate.GetMinerHashrate(rpc_url)
         log("Local Miner Hashrate: {:.2f} MH/S\n".format(minerHashrate / 1000000))
-
         time.sleep(5)
 
 if __name__=='__main__':
