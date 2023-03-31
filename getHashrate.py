@@ -1,9 +1,3 @@
-'''
-Author: kumataz
-Date: 2023-03-29 09:41:43
-LastEditors: kumataz
-LastEditTime: 2023-03-31 10:43:34
-'''
 import requests
 import json
 

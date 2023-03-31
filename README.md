@@ -1,6 +1,6 @@
 ## Web3 Miner
 
-web3.py miner for pow-ethereum. The Eun Miner by Python3.
+web3.py miner for pow-ethereum. 
 
 ### Run ENV
 
