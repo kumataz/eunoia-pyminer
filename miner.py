@@ -2,7 +2,6 @@
 
 from web3 import Web3
 from datetime import datetime
-import os
 import time
 import getHashrate
 
@@ -10,17 +9,18 @@ def log(message):
     print('== {} == {}'.format(datetime.now().strftime("%Y-%m-%d %H:%M:%S"), message))
 
 rpc_url = "http://127.0.0.1:8548"
+miner_address = "0xf02f639A528eC5e546DfaE38606e2d0962e1abd3"
 w3 = Web3(Web3.HTTPProvider(rpc_url))
 
 def main():
     print("Start the Miner..\nConnected to MinerNode: ", w3.isConnected())
-
-    CurrentMinerAddress = w3.eth.coinbase
-    log('Current Node-Etherbase: {}\n'.format(CurrentMinerAddress))  
-    minerAddress = w3.toChecksumAddress("0xf02f639A528eC5e546DfaE38606e2d0962e1abd3")
+    
+    minerAddress = w3.toChecksumAddress(miner_address)
     log('Your Wallet Address: {}'.format(minerAddress))
     minerbalance = w3.eth.getBalance(minerAddress)
-    log('Your Wallet Balance: {} ETH'.format(minerbalance))
+    log('Your Wallet Balance: {} ETH'.format(minerbalance / (10**18)))
+    CurrentMinerAddress = w3.eth.coinbase
+    log('Current Node-Etherbase: {}\n'.format(CurrentMinerAddress))  
     time.sleep(1)
     
     while True:
