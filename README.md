@@ -10,9 +10,11 @@ web3.py miner for pow-ethereum. The Eun Miner by Python3.
 
 * web3 [pip install web3]
 
-### INSTALLATION & USAGE:
+### Installation & Usage:
 
-* git clone https://github.com/kumataz/eunoia-pyminer
+* git clone https://github.com/kumataz/eunoia-py-miner
 * cd eunoia-py-miner
+* Edit rpc_url = ["your_eth_rpc_url"] in miner.py
 * python3 miner.py
+
 
